@@ -202,10 +202,8 @@ module.exports = {
 
     return {
       ImportDeclaration: function handleImports(node) {
-        if (node.specifiers.length) { // Ignoring unassigned imports
-          const name = node.source.value
-          registerNode(context, node, name, 'import', ranks, imported)
-        }
+        const name = node.source.value
+        registerNode(context, node, name, 'import', ranks, imported)
       },
       CallExpression: function handleRequires(node) {
         if (level !== 0 || !isStaticRequire(node) || !isInVariableDeclarator(node.parent)) {
